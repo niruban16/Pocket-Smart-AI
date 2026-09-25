@@ -1,0 +1,290 @@
+:root {
+    --bg: #f6f7fb;
+    --ink: #172033;
+    --muted: #667085;
+    --brand: #4f46e5;
+    --card: #ffffff;
+    --line: #e4e7ec;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.55 Inter, system-ui, sans-serif;
+}
+
+a {
+    color: var(--brand);
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px max(
+        24px,
+        calc((100% - 1120px) / 2)
+    );
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+nav form {
+    margin: 0;
+}
+
+.brand {
+    font-weight: 800;
+    color: var(--ink);
+    font-size: 20px;
+}
+
+main {
+    max-width: 1120px;
+    margin: auto;
+    padding: 48px 24px 72px;
+}
+
+.hero {
+    padding: 64px 0;
+}
+
+.hero h1 {
+    font-size: clamp(
+        38px,
+        6vw,
+        68px
+    );
+
+    line-height: 1.03;
+
+    max-width: 900px;
+
+    margin: 14px 0;
+}
+
+.hero p {
+    font-size: 20px;
+    color: var(--muted);
+    max-width: 760px;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.three {
+    grid-template-columns:
+        repeat(3, 1fr);
+}
+
+.two {
+    grid-template-columns:
+        repeat(2, 1fr);
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow:
+        0 8px 30px
+        rgba(16, 24, 40, 0.04);
+}
+
+.planner {
+    color: var(--ink);
+}
+
+.narrow {
+    max-width: 650px;
+    margin: 20px auto;
+}
+
+.page-head {
+    margin-bottom: 28px;
+}
+
+.pill {
+    display: inline-block;
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.actions,
+.row,
+.budget-bar {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+
+.row {
+    justify-content: space-between;
+}
+
+.budget-bar {
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.budget-bar span {
+    background: #fff;
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--brand);
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.secondary {
+    background: #fff;
+    color: var(--brand);
+    border: 1px solid var(--line);
+}
+
+.link-btn {
+    border: 0;
+    background: none;
+    color: var(--brand);
+    font: inherit;
+    cursor: pointer;
+}
+
+form {
+    display: grid;
+    gap: 16px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    font-weight: 650;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cfd4dc;
+    border-radius: 10px;
+    font: inherit;
+    background: white;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+small,
+.muted {
+    color: var(--muted);
+}
+
+.error {
+    padding: 10px 12px;
+    background: #fef3f2;
+    color: #b42318;
+    border-radius: 10px;
+}
+
+.success {
+    color: #067647;
+}
+
+.stack {
+    display: grid;
+    gap: 10px;
+}
+
+.history-row {
+    display: grid;
+
+    grid-template-columns:
+        140px 1fr auto auto;
+
+    gap: 14px;
+
+    align-items: center;
+
+    background: #fff;
+
+    border: 1px solid var(--line);
+
+    border-radius: 12px;
+
+    padding: 14px;
+
+    color: var(--ink);
+}
+
+footer {
+    text-align: center;
+    padding: 28px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    background: #fff;
+}
+
+@media (max-width: 760px) {
+
+    .three,
+    .two {
+        grid-template-columns: 1fr;
+    }
+
+    .history-row {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 30px 0;
+    }
+
+    header {
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}

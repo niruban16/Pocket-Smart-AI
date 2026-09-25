@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Party Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="narrow card">
+
+    <h1>
+        Party Budget Planner
+    </h1>
+
+    <form
+        method="post"
+        action="/generate-party"
+    >
+
+        <label>
+            Budget (₹)
+
+            <input
+                type="number"
+                name="budget"
+                min="1"
+                step="1"
+                required
+            >
+        </label>
+
+
+        <label>
+            Event type
+
+            <input
+                name="event_type"
+                placeholder="Birthday"
+                required
+            >
+        </label>
+
+
+        <label>
+            Guests
+
+            <input
+                type="number"
+                name="guests"
+                min="1"
+                max="10000"
+                required
+            >
+        </label>
+
+
+        <label>
+            City
+
+            <input
+                name="city"
+                placeholder="Chennai"
+            >
+        </label>
+
+
+        <label>
+            Preferences
+
+            <textarea
+                name="preferences"
+                placeholder="Vegetarian menu, indoor venue, pastel decor..."
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="btn"
+            type="submit"
+        >
+            Generate party plan
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

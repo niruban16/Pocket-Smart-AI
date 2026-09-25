@@ -1,0 +1,102 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>
+        {% block title %}
+        PocketSmart AI
+        {% endblock %}
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/static/css/style.css"
+    >
+
+</head>
+
+<body>
+
+<header>
+
+    <a
+        class="brand"
+        href="/"
+    >
+        PocketSmart AI
+    </a>
+
+    <nav>
+
+        {% if user %}
+
+            <a href="/dashboard">
+                Dashboard
+            </a>
+
+            <a href="/history">
+                History
+            </a>
+
+            <form
+                action="/logout"
+                method="post"
+            >
+
+                <button
+                    class="link-btn"
+                    type="submit"
+                >
+                    Logout
+                </button>
+
+            </form>
+
+        {% else %}
+
+            <a href="/login">
+                Login
+            </a>
+
+            <a href="/register">
+                Register
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+
+<main>
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+
+<footer>
+
+    Budget-aware recommendations.
+    Marketplace prices are estimates;
+    verify before purchase.
+
+</footer>
+
+
+<script src="/static/js/app.js"></script>
+
+</body>
+
+</html>

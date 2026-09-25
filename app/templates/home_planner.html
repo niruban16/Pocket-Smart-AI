@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="narrow card">
+
+    <h1>
+        Home Interior Planner
+    </h1>
+
+    <form
+        method="post"
+        action="/generate-home"
+    >
+
+        <label>
+            Budget (₹)
+
+            <input
+                type="number"
+                name="budget"
+                min="1"
+                step="1"
+                required
+            >
+        </label>
+
+
+        <label>
+            Room type
+
+            <input
+                name="room_type"
+                placeholder="Living room"
+                required
+            >
+        </label>
+
+
+        <label>
+            Style
+
+            <select name="style">
+
+                <option>
+                    Modern
+                </option>
+
+                <option>
+                    Minimal
+                </option>
+
+                <option>
+                    Traditional
+                </option>
+
+                <option>
+                    Scandinavian
+                </option>
+
+                <option>
+                    Industrial
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+            City
+
+            <input
+                name="city"
+                placeholder="Chennai"
+            >
+        </label>
+
+
+        <label>
+            Needs
+
+            <textarea
+                name="needs"
+                placeholder="Sofa, reading corner, warm lighting..."
+            ></textarea>
+
+        </label>
+
+
+        <button
+            class="btn"
+            type="submit"
+        >
+            Generate plan
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

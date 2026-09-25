@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}
+PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <span class="pill">
+        Generative AI Budget Assistant
+    </span>
+
+    <h1>
+        Plan smarter without losing
+        control of your budget.
+    </h1>
+
+    <p>
+        Get tailored suggestions for
+        home interiors, parties, and
+        jewelry—with optional Gemini-powered
+        reasoning and image understanding.
+    </p>
+
+    <div class="actions">
+
+        {% if user %}
+
+            <a
+                class="btn"
+                href="/dashboard"
+            >
+                Open dashboard
+            </a>
+
+        {% else %}
+
+            <a
+                class="btn"
+                href="/register"
+            >
+                Create free account
+            </a>
+
+            <a
+                class="btn secondary"
+                href="/login"
+            >
+                Sign in
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+
+<section class="grid three">
+
+    <article class="card">
+
+        <h2>
+            Home Interior
+        </h2>
+
+        <p>
+            Furniture, storage,
+            lighting and decor allocations.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <h2>
+            Party Planning
+        </h2>
+
+        <p>
+            Food, venue, decor and
+            event-budget balancing.
+        </p>
+
+    </article>
+
+
+    <article class="card">
+
+        <h2>
+            Jewelry
+        </h2>
+
+        <p>
+            Occasion-aware suggestions
+            with optional outfit image input.
+        </p>
+
+    </article>
+
+</section>
+
+{% endblock %}

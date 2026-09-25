@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard · PocketSmart AI
+{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+
+    <h1>
+        Hello, {{ user.name }}
+    </h1>
+
+    <p>
+        Choose a planner and set your budget.
+    </p>
+
+</section>
+
+
+<section class="grid three">
+
+    <a
+        class="card planner"
+        href="/home-planner"
+    >
+
+        <h2>
+            🏠 Home Planner
+        </h2>
+
+        <p>
+            Design a room within budget.
+        </p>
+
+    </a>
+
+
+    <a
+        class="card planner"
+        href="/party-planner"
+    >
+
+        <h2>
+            🎉 Party Planner
+        </h2>
+
+        <p>
+            Balance food, venue and decor.
+        </p>
+
+    </a>
+
+
+    <a
+        class="card planner"
+        href="/jewelry-planner"
+    >
+
+        <h2>
+            💎 Jewelry Planner
+        </h2>
+
+        <p>
+            Match jewelry to outfit
+            and occasion.
+        </p>
+
+    </a>
+
+</section>
+
+
+<section>
+
+    <h2>
+        Recent recommendations
+    </h2>
+
+    {% if recent %}
+
+        <div class="stack">
+
+            {% for r in recent %}
+
+                <a
+                    class="history-row"
+                    href="/recommendations-details/{{ r.id }}"
+                >
+
+                    <strong>
+                        {{ r.category|title }}
+                    </strong>
+
+                    <span>
+                        ₹{{ '%.0f'|format(
+                            r.result.estimated_total
+                        ) }}
+                    </span>
+
+                    <small>
+                        {{ r.created_at[:10] }}
+                    </small>
+
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p class="muted">
+            No recommendations yet.
+        </p>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

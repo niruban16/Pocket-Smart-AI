@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recommendations
+{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+
+    <span class="pill">
+        {{ rec.category|title }} plan
+    </span>
+
+    <h1>
+        Your recommendations
+    </h1>
+
+    <p>
+        {{ rec.result.summary }}
+    </p>
+
+
+    <div class="budget-bar">
+
+        <span>
+            Budget
+            ₹{{ '%.0f'|format(
+                rec.result.budget
+            ) }}
+        </span>
+
+        <span>
+            Estimated
+            ₹{{ '%.0f'|format(
+                rec.result.estimated_total
+            ) }}
+        </span>
+
+        <span>
+            Remaining
+            ₹{{ '%.0f'|format(
+                rec.result.budget_remaining
+            ) }}
+        </span>
+
+    </div>
+
+
+    {% if rec.result.ai_used %}
+
+        <small class="success">
+            Gemini AI used
+        </small>
+
+    {% else %}
+
+        <small class="muted">
+            Fallback recommendation
+            engine used
+        </small>
+
+    {% endif %}
+
+</section>
+
+
+{% if rec.result.image_insight %}
+
+<div class="card">
+
+    <strong>
+        Image insight:
+    </strong>
+
+    {{ rec.result.image_insight }}
+
+</div>
+
+{% endif %}
+
+
+<section class="grid two">
+
+    {% for item in rec.result['items'] %}
+
+    <article class="card">
+
+        <div class="row">
+
+            <span class="pill">
+                {{ item.category }}
+            </span>
+
+            <strong>
+                ₹{{ '%.0f'|format(
+                    item.estimated_price
+                ) }}
+            </strong>
+
+        </div>
+
+
+        <h2>
+            {{ item.name }}
+        </h2>
+
+
+        <p>
+            {{ item.reason }}
+        </p>
+
+
+        <p class="muted">
+            Platform:
+            {{ item.platform }}
+        </p>
+
+
+        <a
+            href="{{ item.search_url }}"
+            target="_blank"
+            rel="noopener"
+        >
+            Search on
+            {{ item.platform }}
+            ↗
+        </a>
+
+    </article>
+
+    {% endfor %}
+
+</section>
+
+
+<section class="card">
+
+    <h2>
+        Practical tips
+    </h2>
+
+    <ul>
+
+        {% for tip in rec.result.tips %}
+
+        <li>
+            {{ tip }}
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Jewelry Planner
+{% endblock %}
+
+{% block content %}
+
+<section class="narrow card">
+
+    <h1>
+        Jewelry Budget Planner
+    </h1>
+
+    <form
+        method="post"
+        action="/generate-jewelry"
+        enctype="multipart/form-data"
+    >
+
+        <label>
+            Budget (₹)
+
+            <input
+                type="number"
+                name="budget"
+                min="1"
+                step="1"
+                required
+            >
+        </label>
+
+
+        <label>
+            Occasion
+
+            <input
+                name="occasion"
+                placeholder="Wedding reception"
+                required
+            >
+        </label>
+
+
+        <label>
+            Metal preference
+
+            <select
+                name="metal_preference"
+            >
+
+                <option>
+                    Any
+                </option>
+
+                <option>
+                    Gold
+                </option>
+
+                <option>
+                    Silver
+                </option>
+
+                <option>
+                    Rose gold
+                </option>
+
+                <option>
+                    Imitation
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+            Outfit description
+
+            <textarea
+                name="outfit_description"
+                placeholder="Navy saree with silver embroidery..."
+            ></textarea>
+
+        </label>
+
+
+        <label>
+            Outfit image (optional)
+
+            <input
+                type="file"
+                name="outfit_image"
+                accept="image/png,image/jpeg,image/webp"
+            >
+
+            <small>
+                JPG, PNG or WebP;
+                max 5 MB.
+            </small>
+
+        </label>
+
+
+        <button
+            class="btn"
+            type="submit"
+        >
+            Generate jewelry plan
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block content %}
+
+<section class="page-head">
+
+    <h1>
+        Recommendation history
+    </h1>
+
+    <p>
+        Review previous plans and
+        budget totals.
+    </p>
+
+</section>
+
+
+{% if history %}
+
+<div class="stack">
+
+    {% for r in history %}
+
+    <a
+        class="history-row"
+        href="/recommendations-details/{{ r.id }}"
+    >
+
+        <strong>
+            {{ r.category|title }}
+        </strong>
+
+        <span>
+            {{ r.result.summary }}
+        </span>
+
+        <span>
+            ₹{{ '%.0f'|format(
+                r.result.estimated_total
+            ) }}
+        </span>
+
+        <small>
+            {{
+                r.created_at[:19]
+                .replace('T', ' ')
+            }}
+        </small>
+
+    </a>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<p class="muted">
+    No saved recommendations yet.
+</p>
+
+{% endif %}
+
+{% endblock %}
